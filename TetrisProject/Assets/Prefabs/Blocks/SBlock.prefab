@@ -377,3 +377,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: edef76d4957cd30498d0c90161fe7bfe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rotated: 1

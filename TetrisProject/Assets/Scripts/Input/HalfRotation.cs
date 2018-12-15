@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class HalfRotation : MonoBehaviour
 {
-    bool rotated = false;
+    public bool rotated = false;
 
     void Start()
     { 
