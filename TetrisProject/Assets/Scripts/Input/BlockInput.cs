@@ -1,11 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class BlockInput : MonoBehaviour
 {
     public double speed = 1.0;
-    
+
     private int DelayedAutoShiftCurrentFrame = 0;
     private const int DelayedAutoShiftInitialFrameDelay = 16;
     private const int DelayedAutoShiftMainFrameDelay = 6;
@@ -15,38 +17,68 @@ public class BlockInput : MonoBehaviour
     }
 
     void Update()
-    { 
-        if(DelayedAutoShiftCurrentFrame > 0)
+    {
+
+        var movementVector = new Vector3(0, 0, 0);
+
+        var targetPosition = transform.position;
+        var targetChildrenPositions = new Vector3[4];
+
+        if (DelayedAutoShiftCurrentFrame > 0)
             DelayedAutoShiftCurrentFrame -= 1;
-        
-        if(Input.GetButtonDown("Left"))
+
+        if (Input.GetButtonDown("Left"))
         {
-            transform.position += new Vector3(-1,0,0);
+            movementVector.x = -1;
             DelayedAutoShiftCurrentFrame = DelayedAutoShiftInitialFrameDelay;
         }
-        else if(Input.GetButtonDown("Right"))
+        else if (Input.GetButtonDown("Right"))
         {
-            transform.position += new Vector3(1,0,0);
+            movementVector.x = 1;
             DelayedAutoShiftCurrentFrame = DelayedAutoShiftInitialFrameDelay;
         }
 
-        if(Input.GetButton("Left") && DelayedAutoShiftCurrentFrame == 0)
+        if (Input.GetButton("Left") && DelayedAutoShiftCurrentFrame == 0)
         {
-            transform.position += new Vector3(-1,0,0);
+            movementVector.x = -1;
             DelayedAutoShiftCurrentFrame = DelayedAutoShiftMainFrameDelay;
         }
-        else if(Input.GetButton("Right") && DelayedAutoShiftCurrentFrame == 0)
+        else if (Input.GetButton("Right") && DelayedAutoShiftCurrentFrame == 0)
         {
-            transform.position += new Vector3(1,0,0);
+            movementVector.x = 1;
             DelayedAutoShiftCurrentFrame = DelayedAutoShiftMainFrameDelay;
         }
 
         //TODO: Figure out the correct speed for holding Down.
         //This is too fast, I think its based on the level
         //(maybe twice as fast as current level)
-        if(Input.GetButton("Down"))
+        if (Input.GetButton("Down"))
         {
-            transform.position += new Vector3(0,-1,0);
+            movementVector.y = -1;
         }
+
+        for (var item = 0; item < targetChildrenPositions.Length; item++)
+            targetChildrenPositions[item] = transform.GetChild(item).position + movementVector;
+        targetPosition += movementVector;
+
+        if (transform.position != targetPosition && SafeToMove(targetChildrenPositions))
+        {
+            transform.position = targetPosition;
+        }
+    }
+
+    public bool SafeToMove(Vector3[] ChildPositions)
+    {
+        foreach (var vector in ChildPositions)
+        {
+            if (!IsInBounds(vector))
+                return false;
+        }
+        return true;
+    }
+
+    public bool IsInBounds(Vector3 block)
+    {
+        return block.x >= -5.0f && block.x <= 5.0f;
     }
 }
