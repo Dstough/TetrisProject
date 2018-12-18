@@ -61,24 +61,9 @@ public class BlockInput : MonoBehaviour
             targetChildrenPositions[item] = transform.GetChild(item).position + movementVector;
         targetPosition += movementVector;
 
-        if (transform.position != targetPosition && SafeToMove(targetChildrenPositions))
+        if (transform.position != targetPosition && Global.SafeToMove(targetChildrenPositions))
         {
             transform.position = targetPosition;
         }
-    }
-
-    public bool SafeToMove(Vector3[] ChildPositions)
-    {
-        foreach (var vector in ChildPositions)
-        {
-            if (!IsInBounds(vector))
-                return false;
-        }
-        return true;
-    }
-
-    public bool IsInBounds(Vector3 block)
-    {
-        return block.x >= -5.0f && block.x <= 5.0f;
     }
 }

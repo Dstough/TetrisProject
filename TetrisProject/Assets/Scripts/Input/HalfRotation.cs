@@ -7,17 +7,33 @@ public class HalfRotation : MonoBehaviour
     public bool rotated = false;
 
     void Start()
-    { 
+    {
     }
 
     void Update()
     {
-        if(Input.GetButtonDown("A") || Input.GetButtonDown("B"))
+        var rotationVector = new Vector3(0, 0, 0);
+        var targetChildrenPositions = new Vector3[4];
+        var targetPosition = transform;
+
+        if (Input.GetButtonDown("A") || Input.GetButtonDown("B"))
         {
-            if(rotated)
-                transform.Rotate(0,0,90);
+            if (rotated)
+                rotationVector.z = 90;
             else
-                transform.Rotate(0,0,-90);
+                rotationVector.z = -90;
+        }
+
+        targetPosition.Rotate(rotationVector);
+        for (var item = 0; item < targetChildrenPositions.Length; item++)
+        {
+            var targetChildPoition = Quaternion.AngleAxis(rotationVector.z, Vector3.up) * transform.GetChild(item).position;
+            targetChildrenPositions[item] = targetChildPoition;
+        }
+
+        if(Global.SafeToMove(targetChildrenPositions))
+        {
+            transform.Rotate(rotationVector);
             rotated = !rotated;
         }
     }
