@@ -29,23 +29,23 @@ public class BlockInput : MonoBehaviour
 
         if (Input.GetButtonDown("Left"))
         {
-            movementVector.x = -1;
+            movementVector.x = -1.0f;
             DelayedAutoShiftCurrentFrame = DelayedAutoShiftInitialFrameDelay;
         }
         else if (Input.GetButtonDown("Right"))
         {
-            movementVector.x = 1;
+            movementVector.x = 1.0f;
             DelayedAutoShiftCurrentFrame = DelayedAutoShiftInitialFrameDelay;
         }
 
         if (Input.GetButton("Left") && DelayedAutoShiftCurrentFrame == 0)
         {
-            movementVector.x = -1;
+            movementVector.x = -1.0f;
             DelayedAutoShiftCurrentFrame = DelayedAutoShiftMainFrameDelay;
         }
         else if (Input.GetButton("Right") && DelayedAutoShiftCurrentFrame == 0)
         {
-            movementVector.x = 1;
+            movementVector.x = 1.0f;
             DelayedAutoShiftCurrentFrame = DelayedAutoShiftMainFrameDelay;
         }
 
@@ -54,7 +54,7 @@ public class BlockInput : MonoBehaviour
         //(maybe twice as fast as current level)
         if (Input.GetButton("Down"))
         {
-            movementVector.y = -1;
+            movementVector.y = -1.0f;
         }
 
         for (var item = 0; item < targetChildrenPositions.Length; item++)

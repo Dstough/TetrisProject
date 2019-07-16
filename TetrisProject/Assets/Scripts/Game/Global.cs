@@ -23,6 +23,6 @@ public class Global : MonoBehaviour
     }
     public static bool IsInBounds(Vector3 block)
     {
-        return block.x >= -5.0f && block.x <= 5.0f;
+        return block.x > -2.0f && block.x < 9.0f && block.y > -2.0f;
     }
 }
