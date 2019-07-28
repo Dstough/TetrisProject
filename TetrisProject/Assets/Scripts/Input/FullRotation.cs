@@ -8,8 +8,7 @@ public class FullRotation : MonoBehaviour
     void Update()
     {
         var rotationVector = new Vector3(0, 0, 0);
-        var targetChildrenPositions = new Vector3[4];
-
+        
         if (Input.GetButtonDown("A"))
             rotationVector.z = 90;
         else if (Input.GetButtonDown("B"))
@@ -18,16 +17,15 @@ public class FullRotation : MonoBehaviour
         if (rotationVector.z == 0)
             return;
 
-        var safeToRotate = true;
+        var illegalRotation = false;
 
-        foreach(Transform child in transform)
-        {
-            var newPosition = Quaternion.AngleAxis(rotationVector.z, Vector3.up) * child.position;
-            if (!Global.IsInBounds(newPosition))
-                safeToRotate = false;
-        }
+        transform.Rotate(rotationVector);
+
+        foreach (Transform child in transform)
+            if (!Global.IsInBounds(child.position))
+                illegalRotation = true;
         
-        if (safeToRotate)
-            transform.Rotate(rotationVector);
+        if (illegalRotation)
+            transform.Rotate(rotationVector * -1);
     }
 }

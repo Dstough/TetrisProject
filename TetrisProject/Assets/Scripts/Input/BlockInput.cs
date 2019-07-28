@@ -18,53 +18,61 @@ public class BlockInput : MonoBehaviour
 
     void Update()
     {
-
-        var movementVector = new Vector3(0, 0, 0);
-        var targetPosition = transform.position;
-        var targetChildrenPositions = new Vector3[4];
+        var movementVector = new Vector2Int(0, 0);
 
         if (DelayedAutoShiftCurrentFrame > 0)
             DelayedAutoShiftCurrentFrame -= 1;
 
         if (Input.GetButtonDown("Left"))
         {
-            movementVector.x = -1.0f;
+            movementVector.x = -1;
             DelayedAutoShiftCurrentFrame = DelayedAutoShiftInitialFrameDelay;
         }
         else if (Input.GetButtonDown("Right"))
         {
-            movementVector.x = 1.0f;
+            movementVector.x = 1;
             DelayedAutoShiftCurrentFrame = DelayedAutoShiftInitialFrameDelay;
         }
 
         if (Input.GetButton("Left") && DelayedAutoShiftCurrentFrame == 0)
         {
-            movementVector.x = -1.0f;
+            movementVector.x = -1;
             DelayedAutoShiftCurrentFrame = DelayedAutoShiftMainFrameDelay;
         }
         else if (Input.GetButton("Right") && DelayedAutoShiftCurrentFrame == 0)
         {
-            movementVector.x = 1.0f;
+            movementVector.x = 1;
             DelayedAutoShiftCurrentFrame = DelayedAutoShiftMainFrameDelay;
         }
+
+        if (movementVector.x == 0)
+            return;
+
+        var illegalMove = false;
+        var originalPosition = transform.position;
+
+        transform.position = new Vector3(Mathf.Round(transform.position.x + movementVector.x), transform.position.y, transform.position.z);
+
+        foreach (Transform child in transform)
+            if (!Global.IsInBounds(child.position))
+                illegalMove = true;
+
+        if (illegalMove)
+            transform.position = originalPosition;
+
+        movementVector.x = 0;
 
         //TODO: Figure out the correct speed for holding Down.
         //This is too fast, I think its based on the level
         //(maybe twice as fast as current level)
         if (Input.GetButton("Down"))
         {
-            movementVector.y = -1.0f;
+            movementVector.y = -1;
         }
 
-        if (movementVector.x == 0 && movementVector.y == 0)
+        if (movementVector.y == 0)
             return;
 
-        for (var item = 0; item < targetChildrenPositions.Length; item++)
-            targetChildrenPositions[item] = transform.GetChild(item).position + movementVector;
-
-        targetPosition += movementVector;
-
-        if (transform.position != targetPosition && Global.SafeToMove(targetChildrenPositions))
-            transform.position = targetPosition;
+        transform.position = new Vector3(transform.position.x, Mathf.Round(transform.position.y + movementVector.y), transform.position.z);
     }
 }

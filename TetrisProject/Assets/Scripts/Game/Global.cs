@@ -12,17 +12,11 @@ public class Global : MonoBehaviour
     {
     }
     
-    public static bool SafeToMove(Vector3[] ChildPositions)
-    {
-        foreach (var vector in ChildPositions)
-        {
-            if (!IsInBounds(vector))
-                return false;
-        }
-        return true;
-    }
     public static bool IsInBounds(Vector3 block)
     {
-        return block.x >= 0.0f && block.x <= 9.0f && block.y >= 0.0f;
+        var leftBound = block.x >= -0.001f;
+        var rightBound = block.x <= 9.001f;
+        var lowerBound = block.y >= -0.001f;
+        return leftBound && rightBound && lowerBound;
     }
 }
