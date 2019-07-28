@@ -20,7 +20,6 @@ public class BlockInput : MonoBehaviour
     {
 
         var movementVector = new Vector3(0, 0, 0);
-
         var targetPosition = transform.position;
         var targetChildrenPositions = new Vector3[4];
 
@@ -57,13 +56,15 @@ public class BlockInput : MonoBehaviour
             movementVector.y = -1.0f;
         }
 
+        if (movementVector.x == 0 && movementVector.y == 0)
+            return;
+
         for (var item = 0; item < targetChildrenPositions.Length; item++)
             targetChildrenPositions[item] = transform.GetChild(item).position + movementVector;
+
         targetPosition += movementVector;
 
         if (transform.position != targetPosition && Global.SafeToMove(targetChildrenPositions))
-        {
             transform.position = targetPosition;
-        }
     }
 }
