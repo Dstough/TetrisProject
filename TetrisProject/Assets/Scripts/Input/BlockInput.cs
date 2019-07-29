@@ -59,20 +59,5 @@ public class BlockInput : MonoBehaviour
 
         if (illegalMove)
             transform.position = originalPosition;
-
-        movementVector.x = 0;
-
-        //TODO: Figure out the correct speed for holding Down.
-        //This is too fast, I think its based on the level
-        //(maybe twice as fast as current level)
-        if (Input.GetButton("Down"))
-        {
-            movementVector.y = -1;
-        }
-
-        if (movementVector.y == 0)
-            return;
-
-        transform.position = new Vector3(transform.position.x, Mathf.Round(transform.position.y + movementVector.y), transform.position.z);
     }
 }
