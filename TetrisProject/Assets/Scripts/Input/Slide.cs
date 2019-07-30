@@ -2,10 +2,7 @@
 
 public class Slide : MonoBehaviour
 {
-    public double speed = 1.0;
     private int DelayedAutoShiftCurrentFrame = 0;
-    private const int DelayedAutoShiftInitialFrameDelay = 16;
-    private const int DelayedAutoShiftMainFrameDelay = 6;
 
     void Start()
     {
@@ -20,24 +17,24 @@ public class Slide : MonoBehaviour
 
         if (Input.GetButtonDown("Left"))
         {
-            movementVector.x = -1;
-            DelayedAutoShiftCurrentFrame = DelayedAutoShiftInitialFrameDelay;
+            movementVector.x = Global.SlideSpeed * -1;
+            DelayedAutoShiftCurrentFrame = Global.DelayedAutoShiftInitialFrameDelay;
         }
         else if (Input.GetButtonDown("Right"))
         {
-            movementVector.x = 1;
-            DelayedAutoShiftCurrentFrame = DelayedAutoShiftInitialFrameDelay;
+            movementVector.x = Global.SlideSpeed;
+            DelayedAutoShiftCurrentFrame = Global.DelayedAutoShiftInitialFrameDelay;
         }
 
         if (Input.GetButton("Left") && DelayedAutoShiftCurrentFrame == 0)
         {
-            movementVector.x = -1;
-            DelayedAutoShiftCurrentFrame = DelayedAutoShiftMainFrameDelay;
+            movementVector.x = Global.SlideSpeed * -1;
+            DelayedAutoShiftCurrentFrame = Global.DelayedAutoShiftMainFrameDelay;
         }
         else if (Input.GetButton("Right") && DelayedAutoShiftCurrentFrame == 0)
         {
-            movementVector.x = 1;
-            DelayedAutoShiftCurrentFrame = DelayedAutoShiftMainFrameDelay;
+            movementVector.x = Global.SlideSpeed;
+            DelayedAutoShiftCurrentFrame = Global.DelayedAutoShiftMainFrameDelay;
         }
 
         if (movementVector.x == 0)
