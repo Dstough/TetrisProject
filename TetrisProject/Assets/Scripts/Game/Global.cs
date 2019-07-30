@@ -25,6 +25,7 @@ public class Global : MonoBehaviour
 
     void Update()
     {
+        //TODO draw the variables to the screen here.
     }
 
     public static bool IsInBounds(Vector3 block)

@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class BlockFall : MonoBehaviour
+public class Fall : MonoBehaviour
 {
     void Start()
     {
@@ -8,6 +8,5 @@ public class BlockFall : MonoBehaviour
 
     void Update()
     {
-
     }
 }

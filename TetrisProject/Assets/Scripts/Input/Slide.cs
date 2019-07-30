@@ -1,13 +1,8 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using UnityEngine;
-using UnityEngine.UI;
+﻿using UnityEngine;
 
-public class BlockInput : MonoBehaviour
+public class Slide : MonoBehaviour
 {
     public double speed = 1.0;
-
     private int DelayedAutoShiftCurrentFrame = 0;
     private const int DelayedAutoShiftInitialFrameDelay = 16;
     private const int DelayedAutoShiftMainFrameDelay = 6;

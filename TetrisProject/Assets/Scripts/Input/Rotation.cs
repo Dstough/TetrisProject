@@ -2,24 +2,33 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HalfRotation : MonoBehaviour
+public class Rotation : MonoBehaviour
 {
-    public bool rotated = false;
-
+    public enum RotationType { full, half, none }
+    public RotationType rotationType;
+    private bool rotated { get; set; }
     void Start()
     {
+        rotated = false;
     }
 
     void Update()
     {
         var rotationVector = new Vector3(0, 0, 0);
 
-        if (Input.GetButtonDown("A") || Input.GetButtonDown("B"))
+        if (Input.GetButtonDown("A") && rotationType == RotationType.full)
+            rotationVector.z = 90;
+        else if (Input.GetButtonDown("B") && rotationType == RotationType.full)
+            rotationVector.z = -90;
+        else if ((Input.GetButtonDown("A") || Input.GetButtonDown("B")) && rotationType == RotationType.half)
+        {
             if (rotated)
                 rotationVector.z = 90;
             else
                 rotationVector.z = -90;
-        
+            rotated = !rotated;
+        }
+
         if (rotationVector.z == 0)
             return;
 
@@ -32,6 +41,9 @@ public class HalfRotation : MonoBehaviour
                 illegalRotate = true;
 
         if (illegalRotate)
+        {
             transform.Rotate(rotationVector * -1);
+            rotated = !rotated;
+        }
     }
 }
