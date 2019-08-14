@@ -1,14 +1,10 @@
 ﻿using UnityEngine;
 
-public class Rotation : MonoBehaviour
+public class Rotate : MonoBehaviour
 {
     public enum RotationType { full, half, none }
     public RotationType rotationType;
-    private bool rotated { get; set; }
-    void Start()
-    {
-        rotated = false;
-    }
+    private bool rotated = false;
 
     void Update()
     {

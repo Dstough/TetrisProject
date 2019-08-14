@@ -248,6 +248,7 @@ GameObject:
   - component: {fileID: 3873422952930016946}
   - component: {fileID: 8939066722086905757}
   - component: {fileID: 9131056835525600587}
+  - component: {fileID: 3507266320907404840}
   m_Layer: 0
   m_Name: TBlock
   m_TagString: Untagged
@@ -285,7 +286,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a8ba2f9754dd4b4794bd3d5ae0bc99c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 1
 --- !u!114 &9131056835525600587
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -296,6 +296,19 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4737bc9a9d3953b4f830e83d4d2a3490, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rotationType: 0
+--- !u!114 &3507266320907404840
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5361089890259549605}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1493423165c10ae45ba6a0572905d572, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &7063160565114572680

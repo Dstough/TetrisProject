@@ -4,10 +4,6 @@ public class Slide : MonoBehaviour
 {
     private int DelayedAutoShiftCurrentFrame = 0;
 
-    void Start()
-    {
-    }
-
     void Update()
     {
         var movementVector = new Vector2Int(0, 0);
