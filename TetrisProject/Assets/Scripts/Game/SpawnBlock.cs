@@ -25,10 +25,16 @@ public class SpawnBlock : MonoBehaviour
         {
             currentBlock = nextBlock;
             currentBlock.transform.position = transform.position;
-            nextBlock = Instantiate(Blocks[Random.Range(0, Blocks.Length)], new Vector3(nextBlockPosition.x,nextBlockPosition.y,0), Quaternion.identity);
-            nextBlock.GetComponent<Fall>().enabled = false;
-            nextBlock.GetComponent<Slide>().enabled = false;
-            nextBlock.GetComponent<Rotate>().enabled = false;
+
+            foreach (Transform child in currentBlock.transform)
+                if (!Global.IsLegalMove(child.position))
+                {
+                    Global.message = "Game Over";
+                    Global.spawnBlock = false;
+                    return;
+                }
+
+            nextBlock = Instantiate(Blocks[Random.Range(0, Blocks.Length)], new Vector3(nextBlockPosition.x, nextBlockPosition.y, 0), Quaternion.identity);
         }
 
         spawnDropDelay--;
@@ -36,9 +42,7 @@ public class SpawnBlock : MonoBehaviour
         if (spawnDropDelay >= 0)
             return;
 
-        currentBlock.GetComponent<Fall>().enabled = true;
-        currentBlock.GetComponent<Slide>().enabled = true;
-        currentBlock.GetComponent<Rotate>().enabled = true;
+        Global.Enable(currentBlock);
 
         spawnDropDelay = originalSpawnDropDelay;
         currentBlock = null;

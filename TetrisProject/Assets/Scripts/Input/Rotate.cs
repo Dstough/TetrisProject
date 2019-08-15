@@ -31,7 +31,7 @@ public class Rotate : MonoBehaviour
         transform.Rotate(rotationVector);
 
         foreach (Transform child in transform)
-            if (!Global.IsInBounds(child.position))
+            if (!Global.IsLegalMove(child.position))
                 illegalRotate = true;
 
         if (illegalRotate)

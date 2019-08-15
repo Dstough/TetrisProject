@@ -42,7 +42,7 @@ public class Slide : MonoBehaviour
         transform.position = new Vector3(Mathf.Round(transform.position.x + movementVector.x), transform.position.y, transform.position.z);
 
         foreach (Transform child in transform)
-            if (!Global.IsInBounds(child.position))
+            if (!Global.IsLegalMove(child.position))
                 illegalMove = true;
 
         if (illegalMove)
