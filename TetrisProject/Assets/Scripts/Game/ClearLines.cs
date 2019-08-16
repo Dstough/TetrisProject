@@ -18,8 +18,6 @@ public class ClearLines : MonoBehaviour
         if (lineClearDelay == 0)
             for (var index = 0; index < Global.linesToClear.Count; index++)
             {
-                //TODO: There is a bug here somewhere that causes the 0 line to clear but not empty.
-                //It happens when more that 2 lines are cleared at the bottom of the board.
                 for (var y = Global.linesToClear[index]; y < Global.board[0].Length; y++)
                     for (var x = 0; x < Global.board.Length; x++)
                         if (Global.board[x][y] != null)
