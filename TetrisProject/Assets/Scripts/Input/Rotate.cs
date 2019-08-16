@@ -39,7 +39,5 @@ public class Rotate : MonoBehaviour
             transform.Rotate(rotationVector * -1);
             rotated = !rotated;
         }
-        else
-            Global.message = "block rotated";
     }
 }

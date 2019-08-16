@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using System.Collections.Generic;
 
 public class Global : MonoBehaviour
 {
@@ -16,8 +17,9 @@ public class Global : MonoBehaviour
     public static int drought = 0;
     public static string message = string.Empty;
     public static bool spawnBlock = true;
-    public static bool[][] board = new bool[10][];
-    public int messageDuration = 180;
+    public static GameObject[][] board = new GameObject[10][];
+    public static List<int> linesToClear = new List<int>();
+    public int messageDuration = 180; 
     private int originalMessageDuration;
 
     void Start()
@@ -27,9 +29,9 @@ public class Global : MonoBehaviour
         originalMessageDuration = messageDuration;
         for (var index = 0; index < board.Length; index++)
         {
-            board[index] = new bool[20];
+            board[index] = new GameObject[20];
             for (var subIndex = 0; subIndex < board[index].Length; subIndex++)
-                board[index][subIndex] = false;
+                board[index][subIndex] = null;
         }
     }
 
@@ -46,7 +48,7 @@ public class Global : MonoBehaviour
 
     public static bool IsLegalMove(Vector3 block)
     {
-        return block.x >= -0.001f && block.x <= 9.001f && block.y >= -0.001f && block.y <= 19.001f && Global.board[Mathf.RoundToInt(block.x)][Mathf.RoundToInt(block.y)] != true;
+        return block.x >= -0.001f && block.x <= 9.001f && block.y >= -0.001f && block.y <= 19.001f && board[Mathf.RoundToInt(block.x)][Mathf.RoundToInt(block.y)] == null;
     }
 
     public static void Enable(GameObject block)

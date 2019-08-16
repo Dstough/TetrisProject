@@ -4,7 +4,6 @@ public class SpawnBlock : MonoBehaviour
 {
     public GameObject[] Blocks;
     public int spawnDropDelay = 10;
-
     private int originalSpawnDropDelay;
     private GameObject currentBlock;
     private GameObject nextBlock;
@@ -25,6 +24,7 @@ public class SpawnBlock : MonoBehaviour
         {
             currentBlock = nextBlock;
             currentBlock.transform.position = transform.position;
+            currentBlock.GetComponent<Rotate>().enabled = true;
 
             foreach (Transform child in currentBlock.transform)
                 if (!Global.IsLegalMove(child.position))
@@ -35,6 +35,7 @@ public class SpawnBlock : MonoBehaviour
                 }
 
             nextBlock = Instantiate(Blocks[Random.Range(0, Blocks.Length)], new Vector3(nextBlockPosition.x, nextBlockPosition.y, 0), Quaternion.identity);
+            
         }
 
         spawnDropDelay--;
