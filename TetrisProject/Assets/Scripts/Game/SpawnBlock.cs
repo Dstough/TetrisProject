@@ -13,6 +13,8 @@ public class SpawnBlock : MonoBehaviour
     {
         originalSpawnDropDelay = spawnDropDelay;
         nextBlock = Instantiate(Blocks[Random.Range(0, Blocks.Length)], new Vector3(nextBlockPosition.x, nextBlockPosition.y, 0), Quaternion.identity);
+        if (nextBlock.name == "ZBlock(Clone)")
+            nextBlock.transform.position = new Vector3(nextBlock.transform.position.x, nextBlock.transform.position.y - 1, nextBlock.transform.position.z);
     }
 
     void Update()
@@ -24,7 +26,12 @@ public class SpawnBlock : MonoBehaviour
         {
             currentBlock = nextBlock;
             currentBlock.transform.position = transform.position;
+
+            if (currentBlock.name == "ZBlock(Clone)")
+                currentBlock.transform.position = new Vector3(currentBlock.transform.position.x, currentBlock.transform.position.y - 1, currentBlock.transform.position.z);
+
             currentBlock.GetComponent<Rotate>().enabled = true;
+            currentBlock.GetComponent<Slide>().enabled = true;
 
             foreach (Transform child in currentBlock.transform)
                 if (!Global.IsLegalMove(child.position))
@@ -35,7 +42,8 @@ public class SpawnBlock : MonoBehaviour
                 }
 
             nextBlock = Instantiate(Blocks[Random.Range(0, Blocks.Length)], new Vector3(nextBlockPosition.x, nextBlockPosition.y, 0), Quaternion.identity);
-            
+            if (nextBlock.name == "ZBlock(Clone)")
+                nextBlock.transform.position = new Vector3(nextBlock.transform.position.x, nextBlock.transform.position.y - 1, nextBlock.transform.position.z);
         }
 
         spawnDropDelay--;
