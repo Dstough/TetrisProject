@@ -42,6 +42,13 @@ public class SpawnBlock : MonoBehaviour
                 }
 
             nextBlock = Instantiate(Blocks[Random.Range(0, Blocks.Length)], new Vector3(nextBlockPosition.x, nextBlockPosition.y, 0), Quaternion.identity);
+
+            if(currentBlock.name == nextBlock.name)
+            {
+                Destroy(nextBlock);
+                nextBlock = Instantiate(Blocks[Random.Range(0, Blocks.Length)], new Vector3(nextBlockPosition.x, nextBlockPosition.y, 0), Quaternion.identity);
+            }
+
             if (nextBlock.name == "ZBlock(Clone)")
                 nextBlock.transform.position = new Vector3(nextBlock.transform.position.x, nextBlock.transform.position.y - 1, nextBlock.transform.position.z);
         }
