@@ -4,17 +4,24 @@ public class Fall : MonoBehaviour
 {
     private int currentFallFrame = Global.levelSpeeds[Global.level];
     private int fallScore = 0;
+    private bool pressedDown = false;
 
     void Update()
     {
-        currentFallFrame--;
-
-        //TODO: This is not fast enough.
         if (Input.GetButton("Down"))
-            currentFallFrame--;
+        {
+            currentFallFrame = Mathf.Min(currentFallFrame, 2);
+            pressedDown = true;
+        }
 
-        if (currentFallFrame >= 0)
+        if (currentFallFrame-- > 0)
             return;
+
+        if (pressedDown)
+        {
+            fallScore++;
+            pressedDown = false;
+        }
 
         currentFallFrame = Global.levelSpeeds[Global.level];
 
@@ -27,9 +34,6 @@ public class Fall : MonoBehaviour
         foreach (Transform child in transform)
             if (!Global.IsLegalMove(child.position))
                 illegalMove = true;
-
-        if (Input.GetButton("Down"))
-            fallScore++;
 
         if (!illegalMove)
             return;

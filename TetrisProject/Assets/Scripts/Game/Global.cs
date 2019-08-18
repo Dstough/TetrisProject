@@ -12,13 +12,14 @@ public class Global : MonoBehaviour
     public static readonly int[] pointTotals = { 40, 100, 300, 1200 };
     public static int score = 0;
     public static int lines = 0;
-    public static int level = 8;
+    public static int level = 0;
     public static int burn = 0;
     public static int drought = 0;
     public static string message = string.Empty;
     public static bool spawnBlock = true;
     public static GameObject[][] board = new GameObject[10][];
     public static List<int> linesToClear = new List<int>();
+    public static List<GameObject> blocks = new List<GameObject>();
     public int messageDuration = 180; 
     private int originalMessageDuration;
 
@@ -29,7 +30,7 @@ public class Global : MonoBehaviour
         originalMessageDuration = messageDuration;
         for (var index = 0; index < board.Length; index++)
         {
-            board[index] = new GameObject[20];
+            board[index] = new GameObject[23];
             for (var subIndex = 0; subIndex < board[index].Length; subIndex++)
                 board[index][subIndex] = null;
         }
@@ -48,7 +49,7 @@ public class Global : MonoBehaviour
 
     public static bool IsLegalMove(Vector3 block)
     {
-        return block.x >= -0.001f && block.x <= 9.001f && block.y >= -0.001f && block.y <= 19.001f && board[Mathf.RoundToInt(block.x)][Mathf.RoundToInt(block.y)] == null;
+        return block.x >= -0.001f && block.x <= 9.001f && block.y >= -0.001f && board[Mathf.RoundToInt(block.x)][Mathf.RoundToInt(block.y)] == null;
     }
 
     public static void Enable(GameObject block)

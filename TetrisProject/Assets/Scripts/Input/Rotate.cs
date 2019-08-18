@@ -5,25 +5,36 @@ public class Rotate : MonoBehaviour
     public enum RotationType { full, half, none }
     public RotationType rotationType;
     private bool rotated = false;
+    private bool buttonPressed = false;
 
     void Update()
     {
         var rotationVector = new Vector3(0, 0, 0);
 
-        if (Input.GetButtonDown("A") && rotationType == RotationType.full)
+        if (Input.GetButton("A") && !buttonPressed && rotationType == RotationType.full)
+        {
             rotationVector.z = 90;
-        else if (Input.GetButtonDown("B") && rotationType == RotationType.full)
+            buttonPressed = true;
+        }
+        else if (Input.GetButtonDown("B") && !buttonPressed && rotationType == RotationType.full)
+        {
             rotationVector.z = -90;
-        else if ((Input.GetButtonDown("A") || Input.GetButtonDown("B")) && rotationType == RotationType.half)
+            buttonPressed = true;
+        }
+        else if ((Input.GetButton("A") || Input.GetButton("B")) && !buttonPressed && rotationType == RotationType.half)
         {
             if (rotated)
                 rotationVector.z = 90;
             else
                 rotationVector.z = -90;
             rotated = !rotated;
+            buttonPressed = true;
         }
 
-        if (rotationVector.z == 0)
+        if (!Input.GetButton("A") && !Input.GetButton("B"))
+            buttonPressed = false;
+        
+        if (!buttonPressed)
             return;
 
         var illegalRotate = false;

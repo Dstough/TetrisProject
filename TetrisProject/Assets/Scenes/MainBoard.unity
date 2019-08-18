@@ -139,6 +139,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lineClearDelay: 10
+--- !u!114 &86745133
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 86745128}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5321443e5c7b49840bc38f3553f3b53d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -242,12 +254,12 @@ PrefabInstance:
     - target: {fileID: 8709484178596300860, guid: a22c69fa7946cdf48a2617ad93fdc9e6,
         type: 3}
       propertyPath: m_Text
-      value: 
+      value: Game Over
       objectReference: {fileID: 0}
     - target: {fileID: 8709484178596300860, guid: a22c69fa7946cdf48a2617ad93fdc9e6,
         type: 3}
       propertyPath: m_FontData.m_FontSize
-      value: 4
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 8709484178596300860, guid: a22c69fa7946cdf48a2617ad93fdc9e6,
         type: 3}
