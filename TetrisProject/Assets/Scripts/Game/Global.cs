@@ -36,17 +36,6 @@ public class Global : MonoBehaviour
         }
     }
 
-    void Update()
-    {
-        if (messageDuration > 0 && message != string.Empty)
-            messageDuration--;
-        else
-        {
-            message = string.Empty;
-            messageDuration = originalMessageDuration;
-        }
-    }
-
     public static bool IsLegalMove(Vector3 block)
     {
         return block.x >= -0.001f && block.x <= 9.001f && block.y >= -0.001f && board[Mathf.RoundToInt(block.x)][Mathf.RoundToInt(block.y)] == null;
