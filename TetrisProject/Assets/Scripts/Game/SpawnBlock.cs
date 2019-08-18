@@ -43,6 +43,8 @@ public class SpawnBlock : MonoBehaviour
                 {
                     Global.message = "Game Over";
                     Global.spawnBlock = false;
+                    Global.cleanUp = false;
+                    Global.clearBoard = true;
                     return;
                 }
 

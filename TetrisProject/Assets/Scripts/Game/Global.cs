@@ -17,17 +17,16 @@ public class Global : MonoBehaviour
     public static int drought = 0;
     public static string message = string.Empty;
     public static bool spawnBlock = true;
+    public static bool clearBoard = false;
+    public static bool cleanUp = true;
     public static GameObject[][] board = new GameObject[10][];
     public static List<int> linesToClear = new List<int>();
     public static List<GameObject> blocks = new List<GameObject>();
-    public int messageDuration = 180; 
-    private int originalMessageDuration;
 
     void Start()
     {
         QualitySettings.vSyncCount = 0;
         Application.targetFrameRate = FrameRate;
-        originalMessageDuration = messageDuration;
         for (var index = 0; index < board.Length; index++)
         {
             board[index] = new GameObject[23];

@@ -7,6 +7,9 @@ public class CleanUpBlocks : MonoBehaviour
 
     void Update()
     {
+        if (!Global.cleanUp)
+            return;
+
         foreach (var block in Global.blocks)
             if (block.transform.childCount == 0)
                 blocksToRemove.Add(block);
