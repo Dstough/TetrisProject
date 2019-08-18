@@ -3,7 +3,7 @@
 public class SpawnBlock : MonoBehaviour
 {
     public GameObject[] Blocks;
-    public int spawnDropDelay = 10;
+    public static int spawnDropDelay = 10;
     private int originalSpawnDropDelay;
     private GameObject currentBlock;
     private GameObject nextBlock;

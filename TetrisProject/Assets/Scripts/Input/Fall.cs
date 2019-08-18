@@ -57,13 +57,18 @@ public class Fall : MonoBehaviour
                 Global.linesToClear.Add(y);
         }
 
-        //TODO: Add bonus time to spawn drop delay based on height of block when locked.
-        //Every 3 lines above the first two add an extra frame to the delay.
-        //Height 3 - 6 add 1
-        //Height 7 - 10 add 2
-        //Height 11 - 13 add 3
-        //Height 14 - 17 add 4
-        //Height 17 - 19 add 5
+        if (transform.position.y < 3)
+            SpawnBlock.spawnDropDelay = 10;
+        else if (transform.position.y < 7)
+            SpawnBlock.spawnDropDelay = 11;
+        else if (transform.position.y < 11)
+            SpawnBlock.spawnDropDelay = 12;
+        else if (transform.position.y < 14)
+            SpawnBlock.spawnDropDelay = 13;
+        else if (transform.position.y < 17)
+            SpawnBlock.spawnDropDelay = 14;
+        else
+            SpawnBlock.spawnDropDelay = 15;
 
         Global.spawnBlock = Global.linesToClear.Count == 0;
         Global.score += fallScore;

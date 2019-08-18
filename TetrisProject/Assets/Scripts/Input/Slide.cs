@@ -11,6 +11,8 @@ public class Slide : MonoBehaviour
         if (DelayedAutoShiftCurrentFrame > 0)
             DelayedAutoShiftCurrentFrame -= 1;
 
+        //TODO: build in logic for skill stops.
+
         if (Input.GetButtonDown("Left"))
         {
             movementVector.x = Global.SlideSpeed * -1;
