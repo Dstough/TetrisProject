@@ -2,7 +2,6 @@
 
 public class Slide : MonoBehaviour
 {
-
     private int DelayedAutoShiftCurrentFrame = 0;
     private bool skillStop = true;
 
