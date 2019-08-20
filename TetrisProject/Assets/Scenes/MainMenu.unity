@@ -2231,7 +2231,7 @@ GameObject:
   - component: {fileID: 920213714}
   - component: {fileID: 920213713}
   m_Layer: 5
-  m_Name: Level (1)
+  m_Name: LevelLabel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3014,7 +3014,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: comming soon
+  m_Text: coming soon
 --- !u!222 &1546545226
 CanvasRenderer:
   m_ObjectHideFlags: 0
