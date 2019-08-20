@@ -7,13 +7,11 @@ public class IntervalManager : MonoBehaviour
     /// <summary>
     /// Time interval in seconds.
     /// </summary>
-
     private const float FRAME_PERIOD = 1 / Global.FrameRate;
     private static int numIntervals = 0;
     private static float lastRunTime = 0f;
     private Dictionary<int, UnityEvent> intervalDictionary;
     private static IntervalManager intervalManager;
-
     public static IntervalManager instance
     {
         get
@@ -41,8 +39,7 @@ public class IntervalManager : MonoBehaviour
         if (interval <= 0)
             return;
 
-        UnityEvent thisEvent = null;
-
+        UnityEvent thisEvent;
         if (instance.intervalDictionary.TryGetValue(interval, out thisEvent))
             thisEvent.AddListener(listener);
         else
@@ -58,8 +55,7 @@ public class IntervalManager : MonoBehaviour
         if (instance.intervalDictionary == null)
             return;
 
-        UnityEvent thisEvent = null;
-
+        UnityEvent thisEvent;
         if (instance.intervalDictionary.TryGetValue(interval, out thisEvent))
             thisEvent.RemoveListener(listener);
     }
@@ -77,8 +73,7 @@ public class IntervalManager : MonoBehaviour
             foreach (var i in instance.intervalDictionary.Keys)
                 if (numIntervals % i == 0)
                 {
-                    UnityEvent thisEvent = null;
-
+                    UnityEvent thisEvent;
                     if (instance.intervalDictionary.TryGetValue(i, out thisEvent))
                         thisEvent.Invoke();
                 }
