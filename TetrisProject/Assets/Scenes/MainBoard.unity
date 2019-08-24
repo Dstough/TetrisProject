@@ -192,7 +192,7 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: Level Up
     clip: {fileID: 8300000, guid: a58f209e822579447b67d7491ba1ed2f, type: 3}
-    volume: 0.5
+    volume: 1
     pitch: 1
     loop: 0
     source: {fileID: 0}
