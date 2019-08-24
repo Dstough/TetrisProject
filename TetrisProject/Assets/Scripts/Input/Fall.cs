@@ -42,6 +42,8 @@ public class Fall : MonoBehaviour
 
         Global.Disable(gameObject);
 
+        AudioManager.PlaySound("Lock");
+
         foreach (Transform child in transform)
             Global.board[Mathf.RoundToInt(child.position.x)][Mathf.RoundToInt(child.position.y)] = child.gameObject;
 
@@ -56,6 +58,11 @@ public class Fall : MonoBehaviour
             if (clearThisLine)
                 Global.linesToClear.Add(y);
         }
+
+        if (Global.linesToClear.Count == 4)
+            AudioManager.PlaySound("Tetris");
+        else if (Global.linesToClear.Count > 0)
+            AudioManager.PlaySound("Line Clear");
 
         if (transform.position.y < 3)
             SpawnBlock.spawnDropDelay = 10;

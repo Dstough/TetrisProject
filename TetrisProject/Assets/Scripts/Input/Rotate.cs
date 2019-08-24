@@ -11,7 +11,7 @@ public class Rotate : MonoBehaviour
     {
         var rotationVector = new Vector3(0, 0, 0);
 
-        if (Input.GetButton("A") && !buttonPressed && rotationType == RotationType.full)
+        if (Input.GetButtonDown("A") && !buttonPressed && rotationType == RotationType.full)
         {
             rotationVector.z = 90;
             buttonPressed = true;
@@ -33,7 +33,7 @@ public class Rotate : MonoBehaviour
 
         if (!Input.GetButton("A") && !Input.GetButton("B"))
             buttonPressed = false;
-        
+
         if (!buttonPressed)
             return;
 
@@ -49,6 +49,11 @@ public class Rotate : MonoBehaviour
         {
             transform.Rotate(rotationVector * -1);
             rotated = !rotated;
+        }
+        else
+        {
+            if (Input.GetButtonDown("A") || Input.GetButtonDown("B"))
+                AudioManager.PlaySound("Rotate");
         }
     }
 }

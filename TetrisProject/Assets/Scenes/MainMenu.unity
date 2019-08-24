@@ -1113,6 +1113,7 @@ GameObject:
   - component: {fileID: 454691916}
   - component: {fileID: 454691915}
   - component: {fileID: 454691914}
+  - component: {fileID: 454691917}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1185,6 +1186,68 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &454691917
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 454691913}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e91e312c5b2bfe41a23ce5c4209b994, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sounds:
+  - name: Game Over
+    clip: {fileID: 8300000, guid: 97ebd68f17972ea4b90b54f8be15786b, type: 3}
+    volume: 0.5
+    pitch: 0.1
+    loop: 0
+    source: {fileID: 0}
+  - name: Line Clear
+    clip: {fileID: 8300000, guid: efa0fc22e74e4c14e9bfc9890ed7cbf0, type: 3}
+    volume: 0.5
+    pitch: 0.1
+    loop: 0
+    source: {fileID: 0}
+  - name: Tetris
+    clip: {fileID: 8300000, guid: 022e89fa29e370e48ace4a3b9b590f6a, type: 3}
+    volume: 0.518
+    pitch: 0.1
+    loop: 0
+    source: {fileID: 0}
+  - name: Lock
+    clip: {fileID: 8300000, guid: 760abb88e2a94df42800229fd6d9b670, type: 3}
+    volume: 0.5
+    pitch: 0.1
+    loop: 0
+    source: {fileID: 0}
+  - name: Rotate
+    clip: {fileID: 8300000, guid: 157eb9a19b6c745448568bb5ffcd92e1, type: 3}
+    volume: 0.202
+    pitch: 2
+    loop: 0
+    source: {fileID: 0}
+  musicTracks:
+  - name: Crimea River
+    clip: {fileID: 8300000, guid: 2dd25a1a9a2057643884229367d61db2, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 1
+    source: {fileID: 0}
+  - name: Techtris Type Z
+    clip: {fileID: 8300000, guid: 5f0383bedf10d4f48b73d182400f3158, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 1
+    source: {fileID: 0}
+  - name: Thirty-Plus
+    clip: {fileID: 8300000, guid: fea98b408e8c3c049a66a7f38469f7e1, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 1
+    source: {fileID: 0}
 --- !u!1 &500623595
 GameObject:
   m_ObjectHideFlags: 0

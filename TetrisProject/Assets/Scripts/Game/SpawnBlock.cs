@@ -41,6 +41,8 @@ public class SpawnBlock : MonoBehaviour
             foreach (Transform child in currentBlock.transform)
                 if (!Global.IsLegalMove(child.position))
                 {
+                    AudioManager.StopMusic(Global.song);
+                    AudioManager.PlaySound("Game Over");
                     Global.message = "Game Over";
                     Global.spawnBlock = false;
                     Global.cleanUp = false;

@@ -51,5 +51,8 @@ public class Slide : MonoBehaviour
 
         if (illegalMove)
             transform.position = originalPosition;
+        else
+            AudioManager.PlaySound("Rotate");
+        
     }
 }

@@ -18,6 +18,7 @@ public class DrawHud : MonoBehaviour
         burn = GameObject.Find("Burn").GetComponent<Text>();
         drought = GameObject.Find("Drought").GetComponent<Text>();
         message = GameObject.Find("Message").GetComponent<Text>();
+        AudioManager.PlayMusic(Global.song);
     }
 
     void Update()

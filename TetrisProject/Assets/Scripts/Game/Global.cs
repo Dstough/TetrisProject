@@ -16,6 +16,7 @@ public class Global : MonoBehaviour
     public static int burn = 0;
     public static int drought = 0;
     public static string message = string.Empty;
+    public static string song = string.Empty;
     public static bool spawnBlock = true;
     public static bool clearBoard = false;
     public static bool cleanUp = true;
