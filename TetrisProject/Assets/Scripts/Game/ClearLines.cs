@@ -54,7 +54,10 @@ public class ClearLines : MonoBehaviour
             Global.burn += Global.linesToClear.Count;
 
         if (Global.lines >= Global.linesToTransition[Global.level])
+        {
             Global.level++;
+            AudioManager.PlaySound("Level Up");
+        }
 
         Global.linesToClear.Clear();
         Global.spawnBlock = true;

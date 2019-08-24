@@ -190,6 +190,12 @@ MonoBehaviour:
     pitch: 2
     loop: 0
     source: {fileID: 0}
+  - name: Level Up
+    clip: {fileID: 8300000, guid: a58f209e822579447b67d7491ba1ed2f, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
   musicTracks:
   - name: Crimea River
     clip: {fileID: 8300000, guid: 2dd25a1a9a2057643884229367d61db2, type: 3}
