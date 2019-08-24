@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 using System.Collections.Generic;
 
 public class Global : MonoBehaviour
@@ -23,6 +24,7 @@ public class Global : MonoBehaviour
     public static GameObject[][] board = new GameObject[10][];
     public static List<int> linesToClear = new List<int>();
     public static List<GameObject> blocks = new List<GameObject>();
+    public static bool GameOver = false;
 
     void Start()
     {
@@ -33,6 +35,22 @@ public class Global : MonoBehaviour
             board[index] = new GameObject[23];
             for (var subIndex = 0; subIndex < board[index].Length; subIndex++)
                 board[index][subIndex] = null;
+        }
+    }
+
+    void Update()
+    {
+        if(GameOver && Input.GetButtonDown("A"))
+        {
+            GameOver = false;
+            spawnBlock = true;
+            score = 0;
+            lines = 0;
+            burn = 0;
+            drought = 0;
+            level = 0;
+            message = "";
+            SceneManager.LoadScene("MainMenu");
         }
     }
 

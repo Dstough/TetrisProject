@@ -47,6 +47,7 @@ public class SpawnBlock : MonoBehaviour
                     Global.spawnBlock = false;
                     Global.cleanUp = false;
                     Global.clearBoard = true;
+                    Global.GameOver = true;
                     return;
                 }
 
