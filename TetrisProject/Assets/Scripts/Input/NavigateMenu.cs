@@ -66,5 +66,7 @@ public class NavigateMenu : MonoBehaviour
         if (menu[selectedItem].text.Contains("Music"))
             AudioManager.PlayMusic(songs[selectedSong]);
 
+        if (Input.GetKeyDown(KeyCode.Escape))
+            Application.Quit();
     }
 }
