@@ -25,6 +25,9 @@ public class NavigateMenu : MonoBehaviour
 
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.Escape))
+            Application.Quit();
+
         for (int index = 0; index < menu.Length; index++)
         {
             if (selectedItem == index)
@@ -66,7 +69,5 @@ public class NavigateMenu : MonoBehaviour
         if (menu[selectedItem].text.Contains("Music"))
             AudioManager.PlayMusic(songs[selectedSong]);
 
-        if (Input.GetKeyDown(KeyCode.Escape))
-            Application.Quit();
     }
 }
