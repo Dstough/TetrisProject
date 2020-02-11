@@ -49,29 +49,32 @@ public class ClearLines : MonoBehaviour
         else
             lineClearDelay = originalLineClearDelay;
 
-
         Global.lines += Global.linesToClear.Count;
         Global.score += Global.pointTotals[Global.linesToClear.Count - 1] * Global.level;
 
         if (Global.linesToClear.Count < 4)
             Global.burn += Global.linesToClear.Count;
-        
-        if (transitioned)
-            transitionCount += Global.linesToClear.Count;
 
-        if ((!transitioned) & (Global.lines >= Global.linesToTransition[Global.level]))
+        if (!transitioned)
         {
-            transitioned = !transitioned;
-            Global.level++;
-            transitionCount = Global.lines % Global.linesToTransition[Global.level];
-            AudioManager.PlaySound("Level Up");
+            if (Global.lines >= Global.linesToTransition[Global.level])
+            {
+                transitioned = true;
+                transitionCount = Global.lines % Global.linesToTransition[Global.level];
+                Global.level++;
+                AudioManager.PlaySound("Level Up");
+            }
         }
-
-        if(transitioned && transitionCount >= 10)
+        else
         {
-            Global.level++;
-            transitionCount %= 10;
-            AudioManager.PlaySound("Level Up");
+            transitionCount += Global.linesToClear.Count;
+            
+            if (transitionCount >= 10)
+            {
+                Global.level++;
+                transitionCount %= 10;
+                AudioManager.PlaySound("Level Up");
+            }
         }
 
         Global.linesToClear.Clear();
